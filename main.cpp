@@ -2,13 +2,13 @@
 #include "Video.hpp"
 #include "Film.hpp"
 #include "Groupe.hpp"
+#include <memory> 
 
 int main() {
-    Photo* photo1 = new Photo("Photo1", "./media/photo1.png", 48, 2);
-    Photo* photo2 = new Photo("Photo2", "./media/photo2.png", 40, 10);
-    Video* video1 = new Video("Video1", "./media/video1.mov", 120);
-    int durations[] = {10, 20, 30};
-    Film* film1 = new Film("Film1", "./media/film1.mov", 60, durations, 3);
+    auto photo1 = std::make_shared<Photo>("Photo1", "./media/photo1.png", 48, 2);
+    auto photo2 = std::make_shared<Photo>("Photo2", "./media/photo2.png", 40, 10);
+    auto video1 = std::make_shared<Video>("Video1", "./media/video1.mov", 120);
+    auto film1 = std::make_shared<Film>("Film1", "./media/film1.mov", 60, new int[3]{10, 20, 30}, 3);
 
     Groupe groupePhotos("Groupe de Photos");
     Groupe groupeVideos("Groupe de Videos");
@@ -33,10 +33,12 @@ int main() {
 
     groupeMixte.display(std::cout);
 
-    delete photo1;
-    delete photo2;
-    delete video1;
-    delete film1;
+    std::cout << "\nSuppression des objets du groupe mixte..." << std::endl;
+    groupeMixte.clear();
+
+    std::cout << "Affichage après suppression du groupe mixte :" << std::endl;
+    groupePhotos.display(std::cout);
+    groupeVideos.display(std::cout);
 
     return 0;
 }

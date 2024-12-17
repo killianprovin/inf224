@@ -4,9 +4,10 @@
 #include <list>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "Multimedia.h"
 
-class Groupe : public std::list<Multimedia*> {
+class Groupe : public std::list<std::shared_ptr<Multimedia>> {
 private:
     std::string groupName;
 
@@ -18,9 +19,10 @@ public:
     }
 
     void display(std::ostream& os) const {
+        os << "--------------------------------" << std::endl;
         os << "Groupe : " << groupName << std::endl;
-        for (const Multimedia* media : *this) {
-            os << "--------------------------------" << std::endl;
+        for (const auto& media : *this) {
+            os << "----------------" << std::endl;
             if (media) {
                 media->display(os);
             }
