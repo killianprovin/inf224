@@ -9,8 +9,7 @@ class Multimedia {
         std::string filename;
 
     public:
-        Multimedia(std::string name, std::string filename);
-        Multimedia();
+        Multimedia(std::string name = "", std::string filename = ""); 
 
         ~Multimedia();
 
@@ -21,6 +20,8 @@ class Multimedia {
         std::string getFilename() const;
 
         virtual void display(std::ostream& os) const;
+
+        virtual void play() const = 0;
 };
 
 #endif

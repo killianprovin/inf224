@@ -10,7 +10,7 @@ private:
     int duration;
 
 public:
-    Video(const std::string& name = "", const std::string& filename = "", int duration = 0)
+    Video(const std::string name = "", const std::string filename = "", int duration = 0)
         : Multimedia(name, filename), duration(duration) {}
 
     int getDuration() const {
@@ -24,6 +24,11 @@ public:
     void display(std::ostream& os) const override {
         Multimedia::display(os);
         os << "Durée de la vidéo : " << duration << " secondes" << std::endl;
+    }
+
+    void play() const override {
+        std::string command = "open " + getFilename() + " &";
+        system(command.data());
     }
 };
 

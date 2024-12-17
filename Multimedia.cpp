@@ -6,11 +6,6 @@ Multimedia::Multimedia(std::string name, std::string filename) {
     this->filename = filename;
 }
 
-Multimedia::Multimedia() {
-    this->name = "";
-    this->filename = "";
-}
-
 void Multimedia::setName(std::string name) {
     this->name = name;
 }
@@ -31,5 +26,7 @@ void Multimedia::display(std::ostream& os) const {
     os << "Name: " << this->name << std::endl;
     os << "Filename: " << this->filename << std::endl;
 }
+
+void Multimedia::play() const { }
 
 Multimedia::~Multimedia() {}
