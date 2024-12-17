@@ -10,51 +10,51 @@ private:
     int* chapterDurations;
     int chapterCount;
 
-public:
-    Film(const std::string& name = "", const std::string& filename = "", int duration = 0, 
-         const int* durations = nullptr, int count = 0)
-        : Video(name, filename, duration), chapterCount(count) {
-        if (durations && count > 0) {
+    void copyChapterDurations(const int* durations, int count) {
+        chapterCount = count;
+        if (count > 0) {
             chapterDurations = new int[count];
             for (int i = 0; i < count; ++i) {
                 chapterDurations[i] = durations[i];
             }
         } else {
             chapterDurations = nullptr;
-            chapterCount = 0;
         }
+    }
+
+public:
+    Film(const std::string& name = "", const std::string& filename = "", int duration = 0, 
+         const int* durations = nullptr, int count = 0)
+        : Video(name, filename, duration), chapterDurations(nullptr), chapterCount(0) {
+        copyChapterDurations(durations, count);
     }
 
     ~Film() {
         delete[] chapterDurations;
     }
 
-    void setChapterDurations(const int* durations, int count) {
-        delete[] chapterDurations;
-        chapterCount = count;
-        if (durations && count > 0) {
-            chapterDurations = new int[count];
-            for (int i = 0; i < count; ++i) {
-                chapterDurations[i] = durations[i];
-            }
-        } else {
-            chapterDurations = nullptr;
-            chapterCount = 0;
+    Film(const Film& other) : Video(other) {
+        copyChapterDurations(other.chapterDurations, other.chapterCount);
+    }
+
+    Film& operator=(const Film& other) {
+        if (this != &other) {
+            Video::operator=(other);
+            delete[] chapterDurations;
+            copyChapterDurations(other.chapterDurations, other.chapterCount);
         }
+        return *this;
     }
 
-    const int* getChapterDurations() const {
-        return chapterDurations;
-    }
-
-    int getChapterCount() const {
-        return chapterCount;
+    void setChapterDurations(const int* durations, int count) {
+        delete[] chapterDurations; 
+        copyChapterDurations(durations, count);
     }
 
     void display(std::ostream& os) const override {
         Video::display(os);
         os << "Nombre de chapitres : " << chapterCount << std::endl;
-        if (chapterDurations && chapterCount > 0) {
+        if (chapterDurations) {
             os << "Durées des chapitres : ";
             for (int i = 0; i < chapterCount; ++i) {
                 os << chapterDurations[i] << " ";

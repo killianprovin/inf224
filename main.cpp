@@ -1,31 +1,42 @@
-//
-// main.cpp
-// Created on 21/10/2018
-//
-
-#include <iostream>
-#include "Multimedia.h"
 #include "Photo.hpp"
 #include "Video.hpp"
 #include "Film.hpp"
+#include "Groupe.hpp"
 
-using namespace std;
+int main() {
+    Photo* photo1 = new Photo("Photo1", "./media/photo1.png", 48, 2);
+    Photo* photo2 = new Photo("Photo2", "./media/photo2.png", 40, 10);
+    Video* video1 = new Video("Video1", "./media/video1.mov", 120);
+    int durations[] = {10, 20, 30};
+    Film* film1 = new Film("Film1", "./media/film1.mov", 60, durations, 3);
 
-int main(int argc, const char* argv[])
-{
-    std::cout << "Hello brave new world" << std::endl;
+    Groupe groupePhotos("Groupe de Photos");
+    Groupe groupeVideos("Groupe de Videos");
+    Groupe groupeMixte("Groupe Mixte");
 
-    Film* film = new Film("Film", "./media/video1.mov", 120, new int[3]{10, 20, 30}, 3);
+    groupePhotos.push_back(photo1);
+    groupePhotos.push_back(photo2);
 
-    film->display(std::cout);
-    film->setChapterDurations(new int[2]{15, 25}, 2);
-    film->setDuration(150);
-    film->display(std::cout);
-    film->setChapterDurations({}, 0);
-    film->setDuration(150);
-    film->display(std::cout);
+    groupeVideos.push_back(video1);
 
-    delete film;
+    groupeMixte.push_back(photo1);
+    groupeMixte.push_back(video1);
+    groupeMixte.push_back(film1);
+
+    std::cout << "===== Affichage des groupes =====" << std::endl;
+
+    groupePhotos.display(std::cout);
+    std::cout << std::endl;
+
+    groupeVideos.display(std::cout);
+    std::cout << std::endl;
+
+    groupeMixte.display(std::cout);
+
+    delete photo1;
+    delete photo2;
+    delete video1;
+    delete film1;
 
     return 0;
-}  
+}

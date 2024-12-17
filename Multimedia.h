@@ -11,7 +11,7 @@ class Multimedia {
     public:
         Multimedia(std::string name = "", std::string filename = ""); 
 
-        ~Multimedia();
+        virtual ~Multimedia();
 
         void setName(std::string name);
         void setFilename(std::string filename);
