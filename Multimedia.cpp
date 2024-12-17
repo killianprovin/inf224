@@ -19,11 +19,11 @@ void Multimedia::setFilename(std::string filename) {
     this->filename = filename;
 }
 
-std::string Multimedia::getName() {
+std::string Multimedia::getName() const {
     return this->name;
 }
 
-std::string Multimedia::getFilename() {
+std::string Multimedia::getFilename() const {
     return this->filename;
 }
 

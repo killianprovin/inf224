@@ -17,10 +17,10 @@ class Multimedia {
         void setName(std::string name);
         void setFilename(std::string filename);
 
-        std::string getName();
-        std::string getFilename();
+        std::string getName() const;
+        std::string getFilename() const;
 
-        void display(std::ostream& os) const;
+        virtual void display(std::ostream& os) const;
 };
 
 #endif
