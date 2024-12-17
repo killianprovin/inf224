@@ -1,44 +1,35 @@
-#include "Photo.hpp"
-#include "Video.hpp"
-#include "Film.hpp"
-#include "Groupe.hpp"
-#include <memory> 
+#include "Gestionnaire.hpp"
 
 int main() {
-    auto photo1 = std::make_shared<Photo>("Photo1", "./media/photo1.png", 48, 2);
-    auto photo2 = std::make_shared<Photo>("Photo2", "./media/photo2.png", 40, 10);
-    auto video1 = std::make_shared<Video>("Video1", "./media/video1.mov", 120);
-    auto film1 = std::make_shared<Film>("Film1", "./media/film1.mov", 60, new int[3]{10, 20, 30}, 3);
+    Gestionnaire gestionnaire;
 
-    Groupe groupePhotos("Groupe de Photos");
-    Groupe groupeVideos("Groupe de Videos");
-    Groupe groupeMixte("Groupe Mixte");
+    // Création d'objets et groupes
+    gestionnaire.createPhoto("Photo1", "./media/photo1.png", 48, 2);
+    gestionnaire.createVideo("Video1", "./media/video1.mov", 120);
+    auto group1 = gestionnaire.createGroup("Groupe1");
 
-    groupePhotos.push_back(photo1);
-    groupePhotos.push_back(photo2);
+    // Ajout des objets dans le groupe
+    group1->push_back(gestionnaire.createPhoto("Photo2", "./media/photo2.png", 50, 4));
+    group1->push_back(gestionnaire.createVideo("Video2", "./media/video2.mov", 150));
 
-    groupeVideos.push_back(video1);
+    // Affichage des groupes et objets
+    std::cout << "Avant suppression :" << std::endl;
+    gestionnaire.displayGroup("Groupe1");
+    gestionnaire.displayMultimedia("Video1");
 
-    groupeMixte.push_back(photo1);
-    groupeMixte.push_back(video1);
-    groupeMixte.push_back(film1);
+    // Suppression d'un objet multimedia
+    gestionnaire.removeMultimedia("Video2");
 
-    std::cout << "===== Affichage des groupes =====" << std::endl;
+    // Vérification après suppression
+    std::cout << "\nAprès suppression de Video2 :" << std::endl;
+    gestionnaire.displayGroup("Groupe1");
 
-    groupePhotos.display(std::cout);
-    std::cout << std::endl;
+    // Suppression d'un groupe
+    gestionnaire.removeGroup("Groupe1");
 
-    groupeVideos.display(std::cout);
-    std::cout << std::endl;
-
-    groupeMixte.display(std::cout);
-
-    std::cout << "\nSuppression des objets du groupe mixte..." << std::endl;
-    groupeMixte.clear();
-
-    std::cout << "Affichage après suppression du groupe mixte :" << std::endl;
-    groupePhotos.display(std::cout);
-    groupeVideos.display(std::cout);
+    // Vérification après suppression du groupe
+    std::cout << "\nAprès suppression de Groupe1 :" << std::endl;
+    gestionnaire.displayGroup("Groupe1");
 
     return 0;
 }
