@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
         switch (getCommand(command)) {
             case PLAY:
                 gestionnaire.playMultimedia(name, oss);
-                response = "Playing multimedia";
+                response = oss.str();
                 break;
             case SEARCHMULTIMEDIA:
                 gestionnaire.displayMultimedia(name, oss);
