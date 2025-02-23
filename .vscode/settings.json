@@ -60,6 +60,13 @@
         "list": "cpp",
         "optional": "cpp",
         "unordered_map": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "memory": "cpp",
+        "map": "cpp",
+        "__tree": "cpp",
+        "deque": "cpp",
+        "print": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }
