@@ -1,61 +1,87 @@
 package swing;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 
+/**
+ * Étape 2 :
+ * - Ajout d'une barre de menus (JMenuBar) et d'un menu (JMenu).
+ * - Ajout d'une barre d'outils (JToolBar).
+ * - Utilisation d'AbstractAction pour éviter la duplication de code entre le menu et la barre d'outils.
+ */
 public class MainFrame extends JFrame {
 
     private JTextArea textArea;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+
+    // Actions réutilisées par le menu et la barre d'outils
+    private Action action1;
+    private Action action2;
+    private Action actionQuitter;
 
     public MainFrame() {
-        super("Fenêtre Principale");
-        
-        // Zone de texte multi-lignes
-        textArea = new JTextArea(5, 20); 
+        super("Fenêtre Principale - Étape 2");
+
+        // --- Zone de texte multi-lignes ---
+        textArea = new JTextArea(8, 30);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-
-        // On place la zone de texte dans un JScrollPane pour la barre de défilement
         JScrollPane scrollPane = new JScrollPane(textArea);
-        add(scrollPane, BorderLayout.CENTER);
 
-        // Panel pour les boutons, en bas de la fenêtre
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        // --- Création des Actions ---
+        // Action 1
+        action1 = new AbstractAction("Action 1") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea.append("Action 1 déclenchée\n");
+            }
+        };
+        // Action 2
+        action2 = new AbstractAction("Action 2") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea.append("Action 2 déclenchée\n");
+            }
+        };
+        // Action Quitter
+        actionQuitter = new AbstractAction("Quitter") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        };
 
-        // Trois boutons
-        button1 = new JButton("Bouton 1");
-        button2 = new JButton("Bouton 2");
-        button3 = new JButton("Quitter");
+        // --- Barre de menus ---
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menuFichier = new JMenu("Fichier");
+        menuFichier.add(action1);
+        menuFichier.add(action2);
+        menuFichier.addSeparator();
+        menuFichier.add(actionQuitter);
 
-        // On ajoute les boutons au panel
-        buttonPanel.add(button1);
-        buttonPanel.add(button2);
-        buttonPanel.add(button3);
+        menuBar.add(menuFichier);
+        setJMenuBar(menuBar);
 
-        // Le panel de boutons est placé en bas (SOUTH)
-        add(buttonPanel, BorderLayout.SOUTH);
+        // --- Barre d'outils ---
+        JToolBar toolBar = new JToolBar("Barre d'outils");
+        toolBar.add(action1);
+        toolBar.add(action2);
+        toolBar.addSeparator();
+        toolBar.add(actionQuitter);
 
-        // Configuration basique de la fenêtre
+        // --- Mise en page (Layout) ---
+        setLayout(new BorderLayout());
+        add(toolBar, BorderLayout.NORTH);   // barre d'outils en haut
+        add(scrollPane, BorderLayout.CENTER); // zone de texte au centre
+
+        // Configuration de la fenêtre
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();                     // Ajuste la taille en fonction du contenu
-        setLocationRelativeTo(null); // Centre la fenêtre à l’écran
-        setVisible(true);
-
-        // Actions sur les boutons
-        button1.addActionListener(e -> textArea.append("Ligne ajoutée par Bouton 1\n"));
-        button2.addActionListener(e -> textArea.append("Ligne ajoutée par Bouton 2\n"));
-        button3.addActionListener(e -> System.exit(0));
+        pack();                          // Ajuste la taille selon le contenu
+        setLocationRelativeTo(null);     // Centre la fenêtre à l'écran
+        setVisible(true);                // Rend la fenêtre visible
     }
 
     public static void main(String[] args) {
-        new MainFrame();
+        SwingUtilities.invokeLater(MainFrame::new);
     }
 }

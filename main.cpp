@@ -12,8 +12,6 @@
 #include "Groupe.hpp"
 
 
-/*
-
 const int PORT = 3331;
 
 enum command {
@@ -62,7 +60,7 @@ int main(int argc, char* argv[])
         std::ostringstream oss;
         switch (getCommand(command)) {
             case PLAY:
-                //gestionnaire.playMultimedia(name);
+                gestionnaire.playMultimedia(name);
                 response = "Playing multimedia";
                 break;
             case SEARCHMULTIMEDIA:
@@ -97,7 +95,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-*/
+/*
 
 int main() {
     Gestionnaire gestionnaire;
@@ -196,3 +194,5 @@ int main() {
 
     return 0;
 }
+
+*/
