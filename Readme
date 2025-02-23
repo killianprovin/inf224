@@ -1,0 +1,19 @@
+Projet de INF224 C++/Java Swing
+
+J'ia traité toute les questions, tout fonctione sur les ordinateur de TP 
+(sauf la lecture de vidéo il me dit que le format video ne conviens pas "Source image dimensions are too hight" bien que je les ai compresser mais sinon le reste fonctionne)
+
+les multimedia sont :
+Photo1, Photo2, Photo3
+Video1, Video2
+
+les groupes sont :
+Groupe1
+Groupe2
+
+les commandes sont :
+play nom_media                  (qui donne les joue le media "nom_media")
+searchmultimedia nom_media      (qui donne les info du media "nom_media")
+searchgroup nom_groupe          (qui donne les info du media "nom_groupe")
+getallmultimedia                (qui donne le nom de tout les multimedia)
+getallgroup                     (qui donne le nom de tout les groupes)

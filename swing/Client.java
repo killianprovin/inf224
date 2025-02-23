@@ -8,7 +8,6 @@ import java.net.*;
 
 public class Client
 {
-  private static final long serialVersionUID = 1L;
   static final String DEFAULT_HOST = "localhost";
   static final int DEFAULT_PORT = 3331;
   private Socket sock;
