@@ -46,13 +46,13 @@ int main(int argc, char* argv[])
 
     // Création d'objets et groupes
     gestionnaire.createPhoto("Photo1", "./media/photo1.png", 100, 100);
-    gestionnaire.createVideo("Video1", "./media/video1.mov", 120);
+    gestionnaire.createVideo("Video1", "./media/video1.mp4", 120);
     auto group1 = gestionnaire.createGroup("Groupe1");
     auto group2 = gestionnaire.createGroup("Groupe2");
 
     // Ajout des objets dans le groupe
     group1->push_back(gestionnaire.createPhoto("Photo2", "./media/photo2.png", 400, 300));
-    group1->push_back(gestionnaire.createVideo("Video2", "./media/video2.mov", 150));
+    group1->push_back(gestionnaire.createVideo("Video2", "./media/video2.mp4", 150));
 
     group2->push_back(gestionnaire.createPhoto("Photo3", "./media/photo3.png", 1920, 1080));
 
