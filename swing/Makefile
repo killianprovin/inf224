@@ -1,29 +1,56 @@
-# Répertoire de sortie pour les fichiers compilés
-BIN_DIR=bin
-SRC_DIR=swing
-MAIN_CLASS=Main
+##########################################
+#
+#  Makefile
+#  Killian PROVIN
+#  INF224 - TP C++ - http://www.telecom-paristech.fr/~elc/inf224
+#
+##########################################
 
-# Trouve tous les fichiers .java dans le dossier source
-SOURCES=$(wildcard $(SRC_DIR)/*.java)
+#
+# Nom du programme
+#
+PROG = Main
 
-# Génère les fichiers .class correspondants dans le répertoire bin
-CLASSES=$(SOURCES:$(SRC_DIR)/%.java=$(BIN_DIR)/%.class)
+#
+# Fichiers sources
+#
+SOURCES= Main.java MainFrame.java Client.java
 
-# Cible par défaut
-all: $(BIN_DIR) $(CLASSES)
+#
+# Compilateur Java
+#
+JC = javac
 
-# Crée le dossier bin s'il n'existe pas
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+#
+# Options du compilateur Java
+#
+JFLAGS = -g
 
-# Compile chaque fichier .java en fichier .class dans le dossier bin
-$(BIN_DIR)/%.class: $(SRC_DIR)/%.java
-	javac -d $(BIN_DIR) $<
+##########################################
+#
+# Regles de construction/destruction des .class et de l'executable
+#
+ 
+all: classes
 
-# Lance le programme principal
 run: all
-	java -cp $(BIN_DIR) $(MAIN_CLASS)
+	java swing/${PROG}
 
-# Nettoie les fichiers compilés
+classes: $(SOURCES:.java=.class)
+
 clean:
-	rm -rf $(BIN_DIR)
+	-@$(RM) *.class 1>/dev/null 2>&1
+  
+tar:
+	tar cvf ${PROG}.tar.gz ${SOURCES}
+
+
+###########################################
+#
+# Regles implicites
+#
+
+.SUFFIXES: .java .class
+
+.java.class:
+	$(JC) $(JFLAGS) $*.java

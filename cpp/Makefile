@@ -1,7 +1,7 @@
 ##########################################
 #
-#  Exemple de Makefile
-#  Eric Lecolinet - Reda Dehak - Telecom ParisTech 2015
+#  Makefile
+#  Killian PROVIN
 #  INF224 - TP C++ - http://www.telecom-paristech.fr/~elc/inf224
 #
 ##########################################
@@ -12,7 +12,7 @@
 PROG = myprog
 
 #
-# Fichiers sources (NE PAS METTRE les .h ni les .o seulement les .cpp)
+# Fichiers sources
 #
 SOURCES = Multimedia.cpp main.cpp tcpserver.cpp ccsocket.cpp 
 
