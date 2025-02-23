@@ -2,9 +2,10 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <algorithm>
+
 #include "tcpserver.h"
 #include "Gestionnaire.hpp"
-
 
 #include "Photo.hpp"
 #include "Video.hpp"

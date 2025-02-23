@@ -24,7 +24,7 @@ JC = javac
 #
 # Options du compilateur Java
 #
-JFLAGS = -g
+JFLAGS = -g -classpath .
 
 ##########################################
 #
@@ -34,23 +34,21 @@ JFLAGS = -g
 all: classes
 
 run: all
-	java swing/${PROG}
+	java $(PROG)
 
-classes: $(SOURCES:.java=.class)
+classes: Client.class MainFrame.class Main.class
+
+Client.class: Client.java
+	$(JC) $(JFLAGS) Client.java
+
+MainFrame.class: MainFrame.java Client.class
+	$(JC) $(JFLAGS) MainFrame.java
+
+Main.class: Main.java MainFrame.class Client.class
+	$(JC) $(JFLAGS) Main.java
 
 clean:
 	-@$(RM) *.class 1>/dev/null 2>&1
   
 tar:
-	tar cvf ${PROG}.tar.gz ${SOURCES}
-
-
-###########################################
-#
-# Regles implicites
-#
-
-.SUFFIXES: .java .class
-
-.java.class:
-	$(JC) $(JFLAGS) $*.java
+	tar cvf $(PROG).tar.gz $(SOURCES)
