@@ -2,6 +2,7 @@
 // Client Java pour communiquer avec le Serveur C++ 
 // eric lecolinet - telecom paristech - 2015
 //
+package swing;
 
 import java.io.*;
 import java.net.*;
