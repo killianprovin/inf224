@@ -69,7 +69,7 @@ int main(int argc, char* argv[])
         std::ostringstream oss;
         switch (getCommand(command)) {
             case PLAY:
-                gestionnaire.playMultimedia(name);
+                gestionnaire.playMultimedia(name, oss);
                 response = "Playing multimedia";
                 break;
             case SEARCHMULTIMEDIA:

@@ -86,12 +86,13 @@ public:
         }
     }
 
-    void playMultimedia(const std::string& name) const {
+    void playMultimedia(const std::string& name, std::ostream& os) const {
         auto it = multimediaMap.find(name);
         if (it != multimediaMap.end()) {
             it->second->play();
+            os << "Playing multimedia '" << name << "'." << std::endl;
         } else {
-            std::cerr << "Erreur: objet multimedia '" << name << "' non trouvé." << std::endl;
+            os << "Erreur: objet multimedia '" << name << "' non trouvé." << std::endl;
         }
     }
 
