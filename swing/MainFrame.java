@@ -62,7 +62,8 @@ public class MainFrame extends JFrame {
 
                 // Afficher la réponse dans la zone de texte
                 if (response != null) {
-                    textArea.append(response + "\n");
+                    String formattedResponse = response.replace(";", "\n");
+                    textArea.append(formattedResponse + "\n");
                 } else {
                     textArea.append("Aucune réponse du serveur (ou erreur).\n");
                 }

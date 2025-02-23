@@ -76,6 +76,8 @@ int main(int argc, char* argv[])
                 break;
         }
 
+        std::replace(response.begin(), response.end(), '\n', ';');
+
         // return false would close the connecytion with the client
         return true;
     });
