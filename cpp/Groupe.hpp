@@ -18,6 +18,10 @@ public:
         return groupName;
     }
 
+    void getName(std::ostream& os) const {
+        os << groupName << std::endl;
+    }
+
     void display(std::ostream& os) const {
         os << "--------------------------------" << std::endl;
         os << "Groupe : " << groupName << std::endl;

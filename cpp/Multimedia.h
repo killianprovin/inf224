@@ -10,6 +10,7 @@ class Multimedia {
 
 
     protected:
+        //Pour verifier si le nom et le l'emplacement de fichier sont valides
         static bool isValid(const std::string& s, bool allowDot = false) {
             for (char c : s) {
                 if (std::isalnum(static_cast<unsigned char>(c)) || c == '_' || c == '-' || c == '/') {
@@ -34,6 +35,7 @@ class Multimedia {
         void setFilename(std::string filename);
 
         std::string getName() const;
+        void getName(std::ostream& os) const;
         std::string getFilename() const;
 
         virtual void display(std::ostream& os) const;

@@ -56,6 +56,18 @@ public:
         return group;
     }
 
+    void getAllMultimedia(std::ostream& os) const {
+        for (const auto& multimediaPair : multimediaMap) {
+            multimediaPair.second->getName(os);
+        }
+    }
+
+    void getAllGroup(std::ostream& os) const {
+        for (const auto& groupPair : groupMap) {
+            groupPair.second->getName(os);
+        }
+    }
+
     void displayMultimedia(const std::string& name, std::ostream& os) const {
         auto it = multimediaMap.find(name);
         if (it != multimediaMap.end()) {

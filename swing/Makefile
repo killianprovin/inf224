@@ -2,7 +2,7 @@
 #
 #  Makefile
 #  Killian PROVIN
-#  INF224 - TP C++ - http://www.telecom-paristech.fr/~elc/inf224
+#  INF224 - TP Java - http://www.telecom-paristech.fr/~elc/inf224
 #
 ##########################################
 

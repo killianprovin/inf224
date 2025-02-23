@@ -9,7 +9,8 @@ public class MainFrame extends JFrame {
     private JTextField commandField; // Champ pour saisir la commande à envoyer
     private Client client;           // Pour communiquer avec le serveur C++
 
-    // Deux actions : Envoyer et Quitter (réutilisées dans le menu et la barre d'outils)
+    private Action actionAllMedia;
+    private Action actionAllGroup;
     private Action actionEnvoyer;
     private Action actionQuitter;
 
@@ -18,7 +19,6 @@ public class MainFrame extends JFrame {
 
         // Tentative de connexion au serveur
         try {
-            // Ajustez l'hôte/port si nécessaire (par défaut: localhost:3331)
             client = new Client("localhost", 3331);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(
@@ -29,15 +29,74 @@ public class MainFrame extends JFrame {
             );
         }
 
-        // Zone de texte où s'afficheront les réponses du serveur
+        // Zone de texte pour les réponses du serveur
         textArea = new JTextArea(10, 40);
-        textArea.setEditable(false);            // Pas de modification manuelle
+        textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
-        // Champ de saisie pour taper les commandes
+        // Champ pour taper les commandes
         commandField = new JTextField(20);
 
-        // --- Création des Actions ---
+        
+        actionAllMedia = new AbstractAction("Afficher tous les médias") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Vérifier si on est connecté
+                if (client == null) {
+                    textArea.append("Erreur : pas de connexion au serveur.\n");
+                    return;
+                }
+                String request = "getallmultimedia";
+                if (request.isEmpty()) return;
+
+                // Afficher la commande dans la zone de texte
+                textArea.append(">> " + request + "\n");
+
+                // Envoyer la commande au serveur et récupérer la réponse
+                String response = client.send(request);
+
+                // Afficher la réponse dans la zone de texte
+                if (response != null) {
+                    // On remet les retour à la ligne car sinon ca fonctionnait pas si j'nevoyais directement \n 
+                    String formattedResponse = response.replace(";", "\n");
+                    textArea.append(formattedResponse + "\n");
+                } else {
+                    textArea.append("Aucune réponse du serveur (ou erreur).\n");
+                }
+                // Réinitialiser la commande
+                commandField.setText("");
+            }
+        };
+
+        actionAllGroup = new AbstractAction("Afficher tous les groupes") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Vérifier si on est connecté
+                if (client == null) {
+                    textArea.append("Erreur : pas de connexion au serveur.\n");
+                    return;
+                }
+                String request = "getallgroup";
+                if (request.isEmpty()) return;
+
+                // Afficher la commande dans la zone de texte 
+                textArea.append(">> " + request + "\n");
+
+                // Envoyer la commande au serveur et récupérer la réponse
+                String response = client.send(request);
+
+                // Afficher la réponse dans la zone de texte
+                if (response != null) {
+                    // On remet les retour à la ligne car sinon ca fonctionnait pas si j'nevoyais directement \n 
+                    String formattedResponse = response.replace(";", "\n");
+                    textArea.append(formattedResponse + "\n");
+                } else {
+                    textArea.append("Aucune réponse du serveur (ou erreur).\n");
+                }
+                // Réinitialiser la commande
+                commandField.setText("");
+            }
+        };
 
         // Action pour envoyer la commande
         actionEnvoyer = new AbstractAction("Envoyer") {
@@ -52,7 +111,7 @@ public class MainFrame extends JFrame {
                 String request = commandField.getText().trim();
                 if (request.isEmpty()) return;
 
-                // Afficher la commande dans la zone de texte (optionnel)
+                // Afficher la commande dans la zone de texte
                 textArea.append(">> " + request + "\n");
 
                 // Envoyer la commande au serveur et récupérer la réponse
@@ -60,12 +119,13 @@ public class MainFrame extends JFrame {
 
                 // Afficher la réponse dans la zone de texte
                 if (response != null) {
+                    // On remet les retour à la ligne car sinon ca fonctionnait pas si j'nevoyais directement \n 
                     String formattedResponse = response.replace(";", "\n");
                     textArea.append(formattedResponse + "\n");
                 } else {
                     textArea.append("Aucune réponse du serveur (ou erreur).\n");
                 }
-                // Réinitialiser le champ de commande
+                // Réinitialiser la commande
                 commandField.setText("");
             }
         };
@@ -82,7 +142,8 @@ public class MainFrame extends JFrame {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuFichier = new JMenu("Fichier");
 
-        menuFichier.add(actionEnvoyer);
+        menuFichier.add(actionAllMedia);
+        menuFichier.add(actionAllGroup);
         menuFichier.addSeparator();
         menuFichier.add(actionQuitter);
 
@@ -91,7 +152,8 @@ public class MainFrame extends JFrame {
 
         // --- Barre d'outils ---
         JToolBar toolBar = new JToolBar("Barre d'outils");
-        toolBar.add(actionEnvoyer);
+        toolBar.add(actionAllMedia);
+        toolBar.add(actionAllGroup);
         toolBar.addSeparator();
         toolBar.add(actionQuitter);
 
@@ -100,28 +162,40 @@ public class MainFrame extends JFrame {
         commandPanel.add(new JLabel("Commande :"));
         commandPanel.add(commandField);
 
-        // Bouton « Envoyer » (même action que dans le menu/barre d'outils)
+        // Bouton « Envoyer »
         JButton btnEnvoyer = new JButton(actionEnvoyer);
         commandPanel.add(btnEnvoyer);
 
-        // --- Mise en page (Layout) ---
-        setLayout(new BorderLayout());
-        add(toolBar, BorderLayout.NORTH);       // barre d'outils en haut
-        add(scrollPane, BorderLayout.CENTER);   // zone de texte au centre
-        add(commandPanel, BorderLayout.SOUTH);  // champ commande en bas
+        // Zone avec le texte pour expliquer les commandes à droite
+        JTextArea helpTextArea = new JTextArea();
+        helpTextArea.setEditable(false);
+        helpTextArea.setText("Liste des commandes :\n"
+            + "- play nom_du_media\n"
+            + "- searchmultimedia nom_du_media\n"
+            + "- searchgroup nom_du_groupe\n"
+            + "- getallmultimedia\n"
+            + "- getallgroup");
+        helpTextArea.setBackground(new Color(240, 240, 240));
+        JScrollPane helpScrollPane = new JScrollPane(helpTextArea);
+        helpScrollPane.setPreferredSize(new Dimension(300, 0));
 
-        // Configuration de la fenêtre
+        // Mise en page de la fenêtre
+        setLayout(new BorderLayout());
+        add(toolBar, BorderLayout.NORTH);      
+        add(scrollPane, BorderLayout.CENTER);
+        add(commandPanel, BorderLayout.SOUTH);
+        add(helpScrollPane, BorderLayout.EAST);
+
+        // Configuration finale de la fenêtre
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();                          // Ajuste la taille en fonction du contenu
-        setLocationRelativeTo(null);     // Centre la fenêtre sur l'écran
-        setVisible(true);                // Rend la fenêtre visible
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public static void main(String[] args) {
-        // (Optionnel) Sur macOS, la barre de menus s’affichera tout en haut
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
-        // Lancement de l'UI sur le thread événementiel
         SwingUtilities.invokeLater(MainFrame::new);
     }
 }

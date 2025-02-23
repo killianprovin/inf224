@@ -28,6 +28,10 @@ std::string Multimedia::getName() const {
     return this->name;
 }
 
+void Multimedia::getName(std::ostream& os) const {
+    os << this->name << std::endl;
+}
+
 std::string Multimedia::getFilename() const {
     return this->filename;
 }
