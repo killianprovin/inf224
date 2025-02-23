@@ -1,0 +1,119 @@
+\doxysection{Film Class Reference}
+\hypertarget{class_film}{}\label{class_film}\index{Film@{Film}}
+Inheritance diagram for Film\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_film}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_film_a15a8af1b7f222315ad1276c3486ac4ec}\label{class_film_a15a8af1b7f222315ad1276c3486ac4ec} 
+{\bfseries Film} (const std\+::string \&name="{}"{}, const std\+::string \&filename="{}"{}, int duration=0, const int \texorpdfstring{$\ast$}{*}durations=nullptr, int count=0)
+\item 
+std\+::string \mbox{\hyperlink{class_film_a90b6976d5996fb75258722af54413695}{classname}} () const override
+\item 
+\Hypertarget{class_film_a71002f3f02dd2e03d9059bfc86c17118}\label{class_film_a71002f3f02dd2e03d9059bfc86c17118} 
+{\bfseries Film} (const \mbox{\hyperlink{class_film}{Film}} \&other)
+\item 
+\Hypertarget{class_film_a3162aa6c8d939fcd5afe49d47202cbf5}\label{class_film_a3162aa6c8d939fcd5afe49d47202cbf5} 
+\mbox{\hyperlink{class_film}{Film}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_film}{Film}} \&other)
+\item 
+\Hypertarget{class_film_aea2376fefb6f7469462f59cc60f34df4}\label{class_film_aea2376fefb6f7469462f59cc60f34df4} 
+void {\bfseries set\+Chapter\+Durations} (const int \texorpdfstring{$\ast$}{*}durations, int count)
+\item 
+void \mbox{\hyperlink{class_film_a441f4fb605a7d46b906678c87040d707}{display}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_film_aa1eb3cd47569a0d18bc2b32bfc7820c6}{write}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_film_af2cfaafc39bc1cb754ee1c4cf16caccd}{read}} (std\+::istream \&is) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_video}{Video}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Video} (const std\+::string name="{}"{}, const std\+::string filename="{}"{}, int duration=0)
+\item 
+std\+::string \mbox{\hyperlink{class_video_aba3c3656a0755a1b5ce67bdb8fd434ce}{classname}} () const override
+\item 
+int {\bfseries get\+Duration} () const
+\item 
+void {\bfseries set\+Duration} (int duration)
+\item 
+void \mbox{\hyperlink{class_video_a5aa5abf5dc093c7eecab97f9cd30555d}{display}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_video_a280c9bb1af855b1e26be82e4af899e94}{write}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_video_a52d009b89d8a0a781216a4a7e901f86b}{read}} (std\+::istream \&is) override
+\item 
+void \mbox{\hyperlink{class_video_a89e11497f4f200f387805b10bd42922d}{play}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Multimedia} (std\+::string name="{}"{}, std\+::string filename="{}"{})
+\item 
+void {\bfseries set\+Name} (std\+::string name)
+\item 
+void {\bfseries set\+Filename} (std\+::string filename)
+\item 
+std\+::string {\bfseries get\+Name} () const
+\item 
+void {\bfseries get\+Name} (std\+::ostream \&os) const
+\item 
+std\+::string {\bfseries get\+Filename} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries is\+Valid} (const std\+::string \&s, bool allow\+Dot=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_film_a90b6976d5996fb75258722af54413695}\index{Film@{Film}!classname@{classname}}
+\index{classname@{classname}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{classname()}{classname()}}
+{\footnotesize\ttfamily \label{class_film_a90b6976d5996fb75258722af54413695} 
+std\+::string Film\+::classname (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_film_a441f4fb605a7d46b906678c87040d707}\index{Film@{Film}!display@{display}}
+\index{display@{display}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{class_film_a441f4fb605a7d46b906678c87040d707} 
+void Film\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_film_af2cfaafc39bc1cb754ee1c4cf16caccd}\index{Film@{Film}!read@{read}}
+\index{read@{read}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_film_af2cfaafc39bc1cb754ee1c4cf16caccd} 
+void Film\+::read (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_film_aa1eb3cd47569a0d18bc2b32bfc7820c6}\index{Film@{Film}!write@{write}}
+\index{write@{write}!Film@{Film}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{class_film_aa1eb3cd47569a0d18bc2b32bfc7820c6} 
+void Film\+::write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Film.\+hpp\end{DoxyCompactItemize}

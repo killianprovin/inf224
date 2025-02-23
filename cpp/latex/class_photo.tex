@@ -1,0 +1,115 @@
+\doxysection{Photo Class Reference}
+\hypertarget{class_photo}{}\label{class_photo}\index{Photo@{Photo}}
+Inheritance diagram for Photo\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_photo}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_photo_a05f1645d8bb79075d591b34313aa83b9}\label{class_photo_a05f1645d8bb79075d591b34313aa83b9} 
+{\bfseries Photo} (const std\+::string name="{}"{}, const std\+::string filename="{}"{}, int latitude=0, int longitude=0)
+\item 
+std\+::string \mbox{\hyperlink{class_photo_a0e9561b07f7968f5b98a1028323f988e}{classname}} () const override
+\item 
+\Hypertarget{class_photo_ae404d846e916d29e3bb5637e73ad59f2}\label{class_photo_ae404d846e916d29e3bb5637e73ad59f2} 
+int {\bfseries get\+Latitude} () const
+\item 
+\Hypertarget{class_photo_aea1be7b7541ad5825fd24b727ddbd4b1}\label{class_photo_aea1be7b7541ad5825fd24b727ddbd4b1} 
+int {\bfseries get\+Longitude} () const
+\item 
+\Hypertarget{class_photo_a8a27c920e33ff0e8911c54b488eedd63}\label{class_photo_a8a27c920e33ff0e8911c54b488eedd63} 
+void {\bfseries set\+Latitude} (int latitude)
+\item 
+\Hypertarget{class_photo_ae351173cae9a0f84f9a52de3ce37c955}\label{class_photo_ae351173cae9a0f84f9a52de3ce37c955} 
+void {\bfseries set\+Longitude} (int longitude)
+\item 
+void \mbox{\hyperlink{class_photo_a8bfc54f6bb210e3fcbd7b5c501e38053}{display}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_photo_a13709dd07283409d31a8e77a49390030}{write}} (std\+::ostream \&os) const override
+\item 
+void \mbox{\hyperlink{class_photo_afac87fe4dcdcb86d9a81f8389ef291e8}{read}} (std\+::istream \&is) override
+\item 
+void \mbox{\hyperlink{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46}{play}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Multimedia} (std\+::string name="{}"{}, std\+::string filename="{}"{})
+\item 
+void {\bfseries set\+Name} (std\+::string name)
+\item 
+void {\bfseries set\+Filename} (std\+::string filename)
+\item 
+std\+::string {\bfseries get\+Name} () const
+\item 
+void {\bfseries get\+Name} (std\+::ostream \&os) const
+\item 
+std\+::string {\bfseries get\+Filename} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{class_multimedia}{Multimedia}}}
+\begin{DoxyCompactItemize}
+\item 
+static bool {\bfseries is\+Valid} (const std\+::string \&s, bool allow\+Dot=false)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_photo_a0e9561b07f7968f5b98a1028323f988e}\index{Photo@{Photo}!classname@{classname}}
+\index{classname@{classname}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{classname()}{classname()}}
+{\footnotesize\ttfamily \label{class_photo_a0e9561b07f7968f5b98a1028323f988e} 
+std\+::string Photo\+::classname (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_photo_a8bfc54f6bb210e3fcbd7b5c501e38053}\index{Photo@{Photo}!display@{display}}
+\index{display@{display}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{class_photo_a8bfc54f6bb210e3fcbd7b5c501e38053} 
+void Photo\+::display (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46}\index{Photo@{Photo}!play@{play}}
+\index{play@{play}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \label{class_photo_a98b55224b5f9bd016cb08aa2e9a64e46} 
+void Photo\+::play (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_photo_afac87fe4dcdcb86d9a81f8389ef291e8}\index{Photo@{Photo}!read@{read}}
+\index{read@{read}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{class_photo_afac87fe4dcdcb86d9a81f8389ef291e8} 
+void Photo\+::read (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+\Hypertarget{class_photo_a13709dd07283409d31a8e77a49390030}\index{Photo@{Photo}!write@{write}}
+\index{write@{write}!Photo@{Photo}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{class_photo_a13709dd07283409d31a8e77a49390030} 
+void Photo\+::write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_multimedia}{Multimedia}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Photo.\+hpp\end{DoxyCompactItemize}
