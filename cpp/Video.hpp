@@ -54,7 +54,7 @@ public:
     }
 
     void play() const override {
-        std::string command = "open " + getFilename() + " &";
+        std::string command = "mpv " + getFilename() + " &";
         system(command.data());
     }
 };

@@ -69,7 +69,7 @@ public:
     }
 
     void play() const override {
-        std::string command = "open " + getFilename() + " &";
+        std::string command = "xdg-open " + getFilename() + " &";
         system(command.data());
     }
 };
