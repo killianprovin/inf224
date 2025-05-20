@@ -1,5 +1,9 @@
 # Projet de INF224 C++/Java Swing
 
+## Description
+
+Projet de gestion de bibliothèque de media (Photos, Vidéos, Films) en C++ et Java Swing.
+
 ## Lancement du projet
 
 ### Séparement
